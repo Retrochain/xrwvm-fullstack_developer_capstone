@@ -110,9 +110,7 @@ app.post("/insert_review", async function (req, res) {
       .sort({ id: -1 })
       .limit(1);
 
-    const newId = documents.length > 0
-      ? documents[0].id + 1
-      : 1;
+    const newId = documents.length > 0 ? documents[0].id + 1 : 1;
 
     const review = new Reviews({
       id: newId,
