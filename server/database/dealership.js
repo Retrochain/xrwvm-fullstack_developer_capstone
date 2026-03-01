@@ -1,11 +1,13 @@
-const mongoose = require('mongoose');
+"use strict";
 
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
 
-const dealerships = new Schema({
+const { Schema } = mongoose;
+
+const dealershipSchema = new Schema({
   id: {
     type: Number,
-    required: true,
+    required: true
   },
   city: {
     type: String,
@@ -32,7 +34,7 @@ const dealerships = new Schema({
     required: true
   },
   short_name: {
-    type: String,
+    type: String
   },
   full_name: {
     type: String,
@@ -40,4 +42,4 @@ const dealerships = new Schema({
   }
 });
 
-module.exports = mongoose.model('dealerships', dealerships);
+module.exports = mongoose.model("Dealership", dealershipSchema);

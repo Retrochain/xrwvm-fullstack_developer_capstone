@@ -1,34 +1,76 @@
-# Uncomment the imports before you add the code
-from django.urls import path
-from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path
+
 from . import views
 
-app_name = 'djangoapp'
+
+app_name = "djangoapp"
+
 urlpatterns = [
-    # path for registration
-    path(route='registration', view=views.registration, name='registration'),
+    # Registration
+    path(
+        route="registration",
+        view=views.registration,
+        name="registration",
+    ),
 
-    path(route='login', view=views.login_user, name='login'),
+    # Login
+    path(
+        route="login",
+        view=views.login_user,
+        name="login",
+    ),
 
-    # path for logout
-    path(route='logout', view=views.logout_request, name='logout'),
+    # Logout
+    path(
+        route="logout",
+        view=views.logout_request,
+        name="logout",
+    ),
 
-    # path for a list of cars
-    path(route='get_cars', view=views.get_cars, name ='getcars'),
+    # List of cars
+    path(
+        route="get_cars",
+        view=views.get_cars,
+        name="getcars",
+    ),
 
-    # path for dealers
-    path(route='get_dealers/', view=views.get_dealerships, name='get_dealers'),
-    path(route='get_dealers/<str:state>', view=views.get_dealerships, name='get_dealers_by_state'),
+    # Dealers
+    path(
+        route="get_dealers/",
+        view=views.get_dealerships,
+        name="get_dealers",
+    ),
+    path(
+        route="get_dealers/<str:state>",
+        view=views.get_dealerships,
+        name="get_dealers_by_state",
+    ),
 
-    # path for dealer details 
-    path(route='dealer/<int:dealer_id>', view=views.get_dealer_details, name='dealer_details'),
+    # Dealer details
+    path(
+        route="dealer/<int:dealer_id>",
+        view=views.get_dealer_details,
+        name="dealer_details",
+    ),
 
-    # path for dealer reviews
-    path(route='reviews/dealer/<int:dealer_id>', view=views.get_dealer_reviews, name='dealer_reviews'),
+    # Dealer reviews
+    path(
+        route="reviews/dealer/<int:dealer_id>",
+        view=views.get_dealer_reviews,
+        name="dealer_reviews",
+    ),
 
-    # path for adding a review
-    path(route='add_review', view=views.add_review, name='add_review'),
+    # Add review
+    path(
+        route="add_review",
+        view=views.add_review,
+        name="add_review",
+    ),
+]
 
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(
+    settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT,
+)
